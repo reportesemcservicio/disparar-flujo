@@ -16,7 +16,7 @@
             })
             .then(response => {
                 if (response.ok) {
-                    document.getElementById('message').innerText = 'Flujo ejecutado exitosamente.';
+                    document.getElementById('message').innerText = 'El flujo está siendo ejecutado, en caso de error se informará.';
                 } else {
                     document.getElementById('message').innerText = 'Error al ejecutar el flujo.';
                 }
@@ -31,6 +31,6 @@
 </head>
 <body>
     <h1>Disparar Flujo de Power Automate</h1>
-    <p id="message">Ejecutando flujo...</p>
+    <p id="message">El flujo está siendo ejecutado, en caso de error se informará.</p>
 </body>
 </html>
