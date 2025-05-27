@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disparar Flujo de Power Automate</title>
+    <script>
+        function triggerFlow() {
+            fetch('https://prod-44.westus.logic.azure.com:443/workflows/f450d39ebbfd44c8867ce7fcf897b968/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=B8qiQiAWi6mbMY1o70HYfgv0C31YtXAzY46rcPQqZdQ', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: '{}'
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('message').innerText = 'Flujo ejecutado exitosamente.';
+                } else {
+                    document.getElementById('message').innerText = 'Error al ejecutar el flujo.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'Error de conexión.';
+            });
+        }
+
+        window.onload = triggerFlow;
+    </script>
+</head>
+<body>
+    <h1>Disparar Flujo de Power Automate</h1>
+    <p id="message">Ejecutando flujo...</p>
+</body>
+</html>
